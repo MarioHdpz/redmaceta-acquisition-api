@@ -2,13 +2,14 @@ import { BadRequest } from 'fejl'
 import { pick, isEmpty, isNaN } from 'lodash'
 
 // Prevent overposting.
-const pickProps = data => pick(data, ['moisture', 'timestamp', 'sensor_id', 'mac_address'])
+const pickProps = data =>
+  pick(data, ['moisture', 'timestamp', 'sensor_id', 'mac_address'])
 
 /**
- * counter Service.
- * Gets a counter store injected.
+ * SoilMoiusture Service.
+ * Gets a SoilMoiusture store injected.
  */
-export default class CounterService {
+export default class SoilMoiustureService {
   constructor(soilMoistureStore) {
     this.soilMoistureStore = soilMoistureStore
   }

@@ -1,5 +1,5 @@
 /**
- * In-memory people counter store.
+ * In-memory soil moisture store.
  * For demo purposes, gets the logger injected.
  */
 const mongoose = require('mongoose')
