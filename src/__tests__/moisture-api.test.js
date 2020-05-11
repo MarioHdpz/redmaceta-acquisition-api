@@ -4,7 +4,7 @@ import { apiHelper } from './api-helper'
 // in can be beneficial to split them into multiple files for
 // test speed.
 describe('soil-moisture API', () => {
-  it('can create todo', async () => {
+  it('can create todo', async done => {
     const api = await apiHelper()
     const measure = await api.createMoistureMeasure({
       moisture: 44.5,
@@ -23,5 +23,6 @@ describe('soil-moisture API', () => {
         timestamp: '2020-04-01T00:35:00'
       })
     )
+    done()
   })
 })
