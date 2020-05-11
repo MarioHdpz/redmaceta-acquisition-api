@@ -51,16 +51,16 @@ export async function createServer() {
 
   // Creates a http server ready to listen.
   const server = http.createServer(app.callback())
+  const dbConnection = initDB()
 
   // Add a `close` event listener so we can clean up resources.
   server.on('close', () => {
     // You should tear down database connections, TCP connections, etc
     // here to make sure Jest's watch-mode some process management
     // tool does not release resources.
+    dbConnection.close()
     logger.debug('Server closing, bye!')
   })
-
-  initDB()
 
   logger.debug('Server created, ready to listen', { scope: 'startup' })
   return server
