@@ -1,7 +1,7 @@
 version: '3.6'
 
 services:
-  app:
+  sut:
     tty: true
     build: .
     command: 
@@ -10,6 +10,13 @@ services:
     volumes:
       - "./src:/app/src"
     environment:
-      NODE_ENV: development
+      MONGO_URI: mongodb://username:abcd1234@mongo:27017/red_maceta?authSource=admin
+    depends_on:
+      - mongo
     ports:
       - "5000:5000"
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=abcd1234

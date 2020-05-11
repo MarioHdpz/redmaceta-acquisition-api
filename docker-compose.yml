@@ -6,16 +6,20 @@ services:
     build: .
     command: 
       - "yarn"
-      - "dev"
+      - "test"
     volumes:
       - "./src:/app/src"
     environment:
+      MONGO_URI: mongodb://username:abcd1234@mongo:27017/red_maceta?authSource=admin
       NODE_ENV: development
-    ports:
-      - "5000:5000"
     depends_on:
       - mongo
+    ports:
+      - "5000:5000"
   mongo:
     image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=abcd1234
     ports:
-      - 27000:27017
+      - "27018:27017"
